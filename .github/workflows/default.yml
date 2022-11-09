@@ -17,12 +17,8 @@ jobs:
             - name: Clone Dolphin
               run: git clone https://github.com/dolphin-emu/dolphin.git dolphin-emu && cd dolphin-emu
             - name: Submodules
-              run: git submodule update --init 
-            - name: (debug) ls
-              run: ls
+              run: cd dolphin-emu && git submodule update --init 
             - name: Configure
-              run: mkdir Build && cd Build && cmake -Dbindir=../Binary/Linux -Ddatadir=../Binary/Linux ..
+              run: cd dolphin-emu && mkdir Build && cd Build && cmake -Dbindir=../Binary/Linux -Ddatadir=../Binary/Linux ..
             - name: Make!!!
-              run: make -j$(nproc) 
-            - name: (debug) ls
-              run: ls
+              run: cd dolphin-emu/Build && make -j$(nproc) 
